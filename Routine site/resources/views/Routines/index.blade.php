@@ -34,10 +34,14 @@
                 @endif
             @endauth
         </div>
-@endif
+    @endif
 
     <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
         <h1>{{$title}}</h1>
-        <p>{{$paragraph}}</p>
-    </div>
+        <ul>
+            @foreach($routines as $routine)
+                <li>{{$routine -> title}}</li>
+            @endforeach
+        </ul>
+    </div>p
 </div>

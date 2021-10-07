@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\http\controllers\AboutController;
+use \App\Http\Controllers\RoutineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/about', [AboutController::class, 'index']);
+Route::get('/routines', [RoutineController::class, 'index']);
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
