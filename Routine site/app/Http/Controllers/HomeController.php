@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\routine;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::all();
+
+
+        $title = 'Alle routines';
+
+        $routines = Routine::all();
+
+
+        return view('home', compact('title', 'routines', 'users'));
     }
 }

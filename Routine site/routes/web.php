@@ -16,7 +16,7 @@ use \App\Http\Controllers\RoutineController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/about', [AboutController::class, 'index']);
@@ -26,3 +26,4 @@ Route::get('/routines', [RoutineController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
