@@ -25,4 +25,6 @@ class RoutineController extends Controller
         return view('admin.routine', compact('title', 'routines', 'users'));
 
     }
+
+
 }

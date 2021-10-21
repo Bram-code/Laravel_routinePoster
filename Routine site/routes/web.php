@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use \App\http\controllers\AboutController;
 use \App\Http\Controllers\RoutineController;
+use \App\Http\Controllers\CreateController;
+use \App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,15 @@ use \App\Http\Controllers\RoutineController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/routines', [RoutineController::class, 'index']);
-
+Route::get('/create', [CreateController::class, 'index'])->name('create');
+Route::get('/home', [HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('create',[CreateController::class, 'store'])->name('createpost');
+
 

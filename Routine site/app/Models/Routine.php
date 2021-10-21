@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class routine extends Model
 {
     use HasFactory;
+
+    protected $table = 'routines';
+    public $timestamps = false;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'description','image', 'routine', 'user_id',
+    ];
 }
