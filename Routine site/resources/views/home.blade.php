@@ -3,6 +3,10 @@
 @section('content')
 
 <style>
+    a, a:hover{
+        text-decoration: none;
+        color: black;
+    }
     img{
         max-width: 600px;
     }
@@ -25,7 +29,7 @@
 
                     <ul>
                         @foreach($routines as $routine)
-                            <a href=""><li><h1>{{$routine -> title}}</h1>
+                            <a href="{{route('detail', ['id' => $routine -> id])}}"><li><h1>{{$routine -> title}}</h1>
                             by @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</li>
                             <br>
 

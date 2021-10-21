@@ -11,7 +11,6 @@ class HomeController extends Controller
     public function index(){
         $users = User::all();
 
-
         $title = 'Alle routines';
 
         $routines = Routine::all();

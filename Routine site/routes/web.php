@@ -5,7 +5,7 @@ use \App\http\controllers\AboutController;
 use \App\Http\Controllers\RoutineController;
 use \App\Http\Controllers\CreateController;
 use \App\Http\Controllers\HomeController;
-
+use \App\Http\Controllers\DetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,9 +23,10 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/routines', [RoutineController::class, 'index']);
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 
 Auth::routes();
 
-Route::post('create',[CreateController::class, 'store'])->name('createpost');
+Route::post('create',[CreateController::class, 'store']);
 
 
