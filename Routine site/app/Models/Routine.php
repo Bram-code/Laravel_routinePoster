@@ -10,7 +10,7 @@ class routine extends Model
     use HasFactory;
 
     protected $table = 'routines';
-    public $timestamps = false;
+    public $timestamps = true;
     /**
      * The attributes that are mass assignable.
      *

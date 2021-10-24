@@ -13,12 +13,24 @@
     #center{
         text-align: center;
     }
+    form{
+        margin: 20px;
+    }
+
+    .form-control{
+        text-align: center;
+    }
 </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div id="center">
+                <form method="GET" action="#">
+                        <input class="form-control" type="text" name="search" placeholder="What are you interested in?">
+                </form>
+            </div>
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('newest routine') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

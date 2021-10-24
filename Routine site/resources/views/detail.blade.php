@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <style>
+        img{
+            max-width: 600px;
+        }
+        #center{
+            text-align: center;
+        }
+    </style>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -15,8 +25,15 @@
                             </div>
                         @endif
 
+                            <div><h2>Made by: @foreach($users as $user)@if($data -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</h2></div>
 
+                            <div><p>{{$data -> description}}</p></div>
 
+                            <section id="center">
+                                <img><img src="{{$data -> image}}"></div>
+
+                                <div>{{$data -> routine}}</div>
+                            </section>
                         @endforeach
                     </div>
                 </div>

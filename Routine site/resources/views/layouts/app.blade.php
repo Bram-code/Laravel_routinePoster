@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -39,6 +40,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
                         @guest
 
                             @if (Route::has('login'))
@@ -53,9 +55,18 @@
                                 </li>
                             @endif
                         @else
+
+                            @if (Auth::user()->admin == true)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('create')}}">{{ __('Create') }}</a>
+                                    <a class="nav-link" href="{{route('admin')}}">{{ __('Admin Panel') }}</a>
                                 </li>
+                            @endif
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('create')}}">{{ __('Create') }}</a>
+                            </li>
+
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

@@ -20,6 +20,7 @@ class CreateRoutinesTable extends Migration
             $table->string('image')->nullable();
             $table->text('routine');
             $table->integer('user_id');
+            $table->timestamps();
         });
     }
 

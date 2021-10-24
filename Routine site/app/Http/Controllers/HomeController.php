@@ -13,7 +13,7 @@ class HomeController extends Controller
 
         $title = 'Alle routines';
 
-        $routines = Routine::all();
+        $routines = Routine::latest()->get();
 
 
         return view('home', compact('title', 'routines', 'users'));

@@ -17,10 +17,10 @@ use \App\Http\Controllers\DetailController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])-> name('home');
 
 Route::get('/about', [AboutController::class, 'index']);
-Route::get('/routines', [RoutineController::class, 'index']);
+Route::get('/admin', [RoutineController::class, 'index']) -> name('admin');
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index'])->name('detail');
