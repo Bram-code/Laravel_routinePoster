@@ -9,14 +9,18 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
+        $routines = Routine::latest();
+
+        if (request('search')){
+            $routines -> where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%');
+        }
+
         $users = User::all();
 
-        $title = 'Alle routines';
-
-        $routines = Routine::latest()->get();
-
-
-        return view('home', compact('title', 'routines', 'users'));
-
+        return view('home', [
+            'routines' => $routines->get(),
+            'users' => $users
+        ]);
     }
 }
