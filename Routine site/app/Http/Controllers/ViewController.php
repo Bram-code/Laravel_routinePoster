@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Routine;
+use App\Models\routine;
 use App\Models\User;
-use http\Header;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RoutineController extends Controller
+class ViewController extends Controller
 {
     public function __construct()
     {
@@ -17,20 +16,20 @@ class RoutineController extends Controller
 
     public function index(){
 
-        if (Auth::user()->admin == false){
+        $id = request('id');
+
+        if (Auth::user()->id != $id){
             return redirect()->route('home');
         }
 
         $users = User::all();
 
-        $title = 'Alle routines';
+        $title = Auth::user()->name . 's routines';
 
-        $routines = Routine::all();
+        $routines = Routine::all() -> where('user_id', Auth::user()->id);
 
 
-        return view('admin.routine', compact('title', 'routines', 'users'));
+        return view('view', compact('title', 'routines', 'users'));
 
     }
-
-
 }
