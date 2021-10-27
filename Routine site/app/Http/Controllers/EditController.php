@@ -13,10 +13,10 @@ class EditController extends Controller
         $this->middleware('auth');
     }
 
-    public function store()
+    public function update($id, Request $request)
     {
 
-        $this->validate(request(), [
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => 'string',
@@ -24,18 +24,22 @@ class EditController extends Controller
             'user_id' => 'required'
         ]);
 
-        $id = request('id');
-
-        Routine::where('id', $id) -> update(request(['title', 'description', 'image', 'routine', 'user_id']));
+        $routine = Routine::find($id);
+        $routine->title = $request->input('title');
+        $routine->description = $request->input('description');
+        $routine->image = $request->input('image');
+        $routine->routine = $request->input('routine');
+        $routine->user_id = $request->input('user_id');
+        $routine->update();
 
         return redirect()->to('/home');
     }
 
-    public function index(){
-        $id = request('id');
+    public function index($id){
 
-        $routine = Routines::all()->where('id', $id);
+        $routine = Routine::find($id);
 
         return view('edit', compact('routine'));
     }
+
 }

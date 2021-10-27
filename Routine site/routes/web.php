@@ -25,18 +25,16 @@ Route::get('/', [HomeController::class, 'index'])-> name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/admin', [RoutineController::class, 'index']) -> name('admin');
 Route::get('/create', [CreateController::class, 'index'])->name('create');
-Route::get('/edit', [EditController::class, 'index'])->name('edit');
+Route::get('/edit/{id}', [EditController::class, 'index'])->name('edit');
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 Route::get('/view', [ViewController::class, 'index']) -> name('view');
-Route::get('/delete', [DeleteController::class, 'index']) -> name('delete');
-
-
+Route::get('/delete/{id}', [DeleteController::class, 'index']) -> name('delete');
 
 Auth::routes();
 
 Route::post('create',[CreateController::class, 'store']);
-Route::post('edit',[EditController::class, 'store']);
-Route::post('delete',[DeleteController::class, 'delete']);
+Route::post('edit/{id}',[EditController::class, 'update']);
+Route::post('delete/{id}',[DeleteController::class, 'delete']);
 
 

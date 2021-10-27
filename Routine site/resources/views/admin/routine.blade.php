@@ -17,7 +17,12 @@
 
                         <ul>
                             @foreach($routines as $routine)
-                                <li>{{$routine -> title}} by @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</li>
+                                <li>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="{{$routine -> id}}" @if($routine -> active == true) checked @endif>
+                                        <label class="custom-control-label" for="{{$routine -> id}}">{{$routine -> title}} by @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</label>
+                                    </div>
+                                </li>
                             @endforeach
                         </ul>
                 </div>

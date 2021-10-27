@@ -12,23 +12,19 @@ class DeleteController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($id)
     {
 
-        $id = request('id');
-
-        $routine = Routine::all()->where('id', $id);
+        $routine = Routine::find($id);
 
         return view('delete', compact('routine'));
     }
 
-    public function delete()
+    public function delete($id)
     {
-        $id = request('id');
-
-        Routine::where('id', '=', $id) -> delete();
-
+        $routine = Routine::find($id);
+        $routine->delete();
+        return redirect()->to('/home');
     }
-
 
 }

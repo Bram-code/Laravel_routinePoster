@@ -18,10 +18,10 @@ class CreateController extends Controller
         $this->middleware('auth');
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
-        $this->validate(request(), [
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => 'string',
@@ -29,7 +29,13 @@ class CreateController extends Controller
             'user_id' => 'required'
         ]);
 
-        Routine::create(request(['title', 'description', 'image', 'routine', 'user_id']));
+        $routine = new Routine();
+        $routine->title = $request->input('title');
+        $routine->description = $request->input('description');
+        $routine->image = $request->input('image');
+        $routine->routine = $request->input('routine');
+        $routine->user_id = $request->input('user_id');
+        $routine->save();
 
         return redirect()->to('/home');
     }

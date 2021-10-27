@@ -8,14 +8,14 @@
                     <div class="card-header">{{ __('Edit') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ '/edit' }}">
+                        <form method="POST" action="{{ '/edit/'.$routine->id }}">
                             @csrf
-
+                            @method('POST')
                             <div class="form-group row">
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="@foreach($routine as $data){{$data->title}}@endforeach" required autocomplete="title" autofocus>
+                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{$routine->title}}" required autocomplete="title" autofocus>
 
                                     @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                                 <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="@foreach($routine as $data){{$data->description}}@endforeach" required autocomplete="description">
+                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{$routine->description}}" required autocomplete="description">
 
                                     @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image URL') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" required autocomplete="image" value="@foreach($routine as $data){{$data->image}}@endforeach">
+                                    <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" required autocomplete="image" value="{{$routine->image}}">
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                 <label for="routine" class="col-md-4 col-form-label text-md-right">{{ __('Routine') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="routine" type="text" class="form-control" name="routine" required autocomplete="routine" value="@foreach($routine as $data){{$data->routine}}@endforeach">
+                                    <input id="routine" type="text" class="form-control" name="routine" required autocomplete="routine" value="{{$routine->routine}}">
                                 </div>
                             </div>
 
