@@ -41,7 +41,21 @@ class CreateController extends Controller
     }
 
     public function index(){
-        return view('create');
+        $liked = Auth::user()->liked;
+
+        if ($liked == ""){
+            $array = [];
+        }else{
+            $array = unserialize($liked);
+        }
+
+        if (count($array) < 6){
+            $validate = false;
+        }else{
+            $validate = true;
+        }
+
+        return view('create', compact('validate'));
     }
 
 

@@ -15,8 +15,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    @foreach($routine as $data)
-                    <div class="card-header"><h1>{{$data->title}}</h1></div>
+
+                    <div class="card-header"><h1>{{$routine->title}}</h1></div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -25,16 +25,27 @@
                             </div>
                         @endif
 
-                            <div><h2>Made by: @foreach($users as $user)@if($data -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</h2></div>
+                            <div><h2>Made by: @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</h2></div>
 
-                            <div><p>{{$data -> description}}</p></div>
+                            <div><p>{{$routine -> description}}</p></div>
 
                             <section id="center">
-                                <img><img src="{{$data -> image}}"></div>
+                                <img><img src="{{$routine -> image}}"></div>
 
-                                <div>{{$data -> routine}}</div>
+                                <div><p>{{$routine -> routine}}</p></div>
                             </section>
-                        @endforeach
+                        @if ($check == false)
+                        <form method="post" action="{{'/like/' . $routine->id}}">
+                            @csrf
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Like') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    @endif
                     </div>
                 </div>
             </div>

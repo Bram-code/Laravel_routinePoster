@@ -9,6 +9,7 @@ use \App\Http\Controllers\DetailController;
 use \App\Http\Controllers\ViewController;
 use \App\Http\Controllers\EditController;
 use \App\Http\Controllers\DeleteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,23 +21,25 @@ use \App\Http\Controllers\DeleteController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])-> name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index']);
-Route::get('/admin', [RoutineController::class, 'index']) -> name('admin');
+Route::get('/admin', [RoutineController::class, 'index'])->name('admin');
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::get('/edit/{id}', [EditController::class, 'index'])->name('edit');
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('/detail', [DetailController::class, 'index'])->name('detail');
-Route::get('/view', [ViewController::class, 'index']) -> name('view');
-Route::get('/delete/{id}', [DeleteController::class, 'index']) -> name('delete');
+Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');
+Route::get('/view', [ViewController::class, 'index'])->name('view');
+Route::get('/delete/{id}', [DeleteController::class, 'index'])->name('delete');
 
 Auth::routes();
 
-Route::post('create',[CreateController::class, 'store']);
-Route::post('edit/{id}',[EditController::class, 'update']);
-Route::post('delete/{id}',[DeleteController::class, 'delete']);
-Route::post('admin',[RoutineController::class, 'switch']);
+Route::post('create', [CreateController::class, 'store']);
+Route::post('edit/{id}', [EditController::class, 'update']);
+Route::post('delete/{id}', [DeleteController::class, 'delete']);
+Route::post('admin', [RoutineController::class, 'switch']);
+Route::post('like/{id}', [DetailController::class, 'like']);
+
 
 
 

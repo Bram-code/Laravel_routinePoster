@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $routines = Routine::latest();
+        $routines = Routine::latest() -> where('active', '!=', 'true');
 
         if (request('search')){
             $routines -> where('title', 'like', '%' . request('search') . '%')

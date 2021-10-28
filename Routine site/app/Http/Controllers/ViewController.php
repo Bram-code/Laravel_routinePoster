@@ -28,7 +28,6 @@ class ViewController extends Controller
 
         $routines = Routine::all() -> where('user_id', Auth::user()->id);
 
-
         return view('view', compact('title', 'routines', 'users'));
 
     }

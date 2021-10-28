@@ -21,6 +21,7 @@ class CreateRoutinesTable extends Migration
             $table->text('routine');
             $table->integer('user_id');
             $table->boolean('active')->default(true);
+            $table->string('liked')->nullable();
             $table->timestamps();
         });
     }

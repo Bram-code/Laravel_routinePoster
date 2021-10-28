@@ -6,8 +6,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Create') }}</div>
-
                     <div class="card-body">
+
+                        @if($validate == true)
                         <form method="POST" action="{{ '/create' }}">
                             @csrf
 
@@ -75,6 +76,11 @@
                                 </div>
                             </div>
                         </form>
+                        @else
+
+                        <div>You need to like at least like 5 post in order to create your own</div>
+
+                        @endif
                     </div>
                 </div>
             </div>

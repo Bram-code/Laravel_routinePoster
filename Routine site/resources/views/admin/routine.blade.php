@@ -20,8 +20,8 @@
                             @foreach($routines as $routine)
                                 <li>
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" name="{{$routine -> title}}" id="{{$routine -> title}}" @if($routine -> active == true) checked @endif onchange="submit();">
-                                            <label class="custom-control-label" for="{{$routine -> title}}">{{$routine -> title}} by @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</label>
+                                            <input type="checkbox" class="custom-control-input" name="{{$routine -> id}}" id="{{$routine -> id}}" @if($routine -> active == true) checked @endif onchange="submit();">
+                                            <label class="custom-control-label" for="{{$routine -> id}}">{{$routine -> title}} by @foreach($users as $user)@if($routine -> user_id == $user -> id) {{$user -> name}} @endif @endforeach</label>
                                         </div>
                                 </li>
                             @endforeach

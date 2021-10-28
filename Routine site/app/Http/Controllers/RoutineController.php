@@ -24,31 +24,32 @@ class RoutineController extends Controller
 
         $users = User::all();
 
-        $routines = Routine::all();
+        $routines = Routine::latest() -> get();
 
         return view('admin.routine', compact( 'routines', 'users'));
 
     }
 
     public function switch(Request $request){
-        $users = User::all();
 
         $routines = Routine::all();
 
         foreach ($routines as $routine){
-            $check = $request->input($routine->title);
-            if ($routine -> active == true){
+
+            $check = $request->input($routine->id);
+            if ($check == true){
                 $is = '!=';
             }else{
                 $is = '==';
             }
 
             if ($check . $is . $routine -> active){
+
                 $query = Routine::find($routine->id);
-                if($check == false){
-                    $query->active = false;
-                }else{
+                if($check == true){
                     $query->active = true;
+                }else{
+                    $query->active = false;
                 }
                 $query->update();
             }
