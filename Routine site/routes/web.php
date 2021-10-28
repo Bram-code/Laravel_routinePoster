@@ -36,5 +36,7 @@ Auth::routes();
 Route::post('create',[CreateController::class, 'store']);
 Route::post('edit/{id}',[EditController::class, 'update']);
 Route::post('delete/{id}',[DeleteController::class, 'delete']);
+Route::post('admin',[RoutineController::class, 'switch']);
+
 
 

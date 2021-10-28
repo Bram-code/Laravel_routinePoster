@@ -21,16 +21,38 @@ class RoutineController extends Controller
             return redirect()->route('home');
         }
 
-        $users = User::all();
 
-        $title = 'Alle routines';
+        $users = User::all();
 
         $routines = Routine::all();
 
-
-        return view('admin.routine', compact('title', 'routines', 'users'));
+        return view('admin.routine', compact( 'routines', 'users'));
 
     }
 
+    public function switch(Request $request){
+        $users = User::all();
 
+        $routines = Routine::all();
+
+        foreach ($routines as $routine){
+            $check = $request->input($routine->title);
+            if ($routine -> active == true){
+                $is = '!=';
+            }else{
+                $is = '==';
+            }
+
+            if ($check . $is . $routine -> active){
+                $query = Routine::find($routine->id);
+                if($check == false){
+                    $query->active = false;
+                }else{
+                    $query->active = true;
+                }
+                $query->update();
+            }
+        }
+        header("Refresh:0");
+    }
 }
