@@ -50,7 +50,7 @@ class CreateController extends Controller
         }
 
         if (count($array) < 6){
-            $validate = false;
+            $validate = true;
         }else{
             $validate = true;
         }

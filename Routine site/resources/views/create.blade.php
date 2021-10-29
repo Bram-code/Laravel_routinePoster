@@ -78,7 +78,7 @@
                         </form>
                         @else
 
-                        <div>You need to like at least like 5 post in order to create your own</div>
+                        <div>You need to like at least 5 posts in order to create your own</div>
 
                         @endif
                     </div>

@@ -22,6 +22,7 @@ class CreateRoutinesTable extends Migration
             $table->integer('user_id');
             $table->boolean('active')->default(true);
             $table->string('liked')->nullable();
+            $table->string('tag_id')->nullable();
             $table->timestamps();
         });
     }

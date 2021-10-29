@@ -24,11 +24,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div id="center">
                 <form method="GET" action="#">
                         <input class="form-control" type="text" name="search" placeholder="What are you interested in?">
+
+                <div class="container">
+                    <div class="form-group">
+                        <select onchange="this.form.submit()" name="tag" class="form-control" style="width:250px">
+                            <option value="">--- Select day ---</option>
+                            @foreach ($tags as $tag )
+                                <option value="{{ $tag -> id }}">{{ $tag -> tag }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 </form>
-            </div>
+
             <div class="card">
                 <div class="card-header">{{ __('newest routine') }}</div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\routine;
 use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,11 +17,14 @@ class HomeController extends Controller
             ->orWhere('description', 'like', '%' . request('search') . '%');
         }
 
+        $tags = Tag::all();
+
         $users = User::all();
 
         return view('home', [
             'routines' => $routines->get(),
-            'users' => $users
+            'users' => $users,
+            'tags' => $tags
         ]);
     }
 }
