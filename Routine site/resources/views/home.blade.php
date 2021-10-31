@@ -25,15 +25,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
                 <form method="GET" action="#">
-                        <input class="form-control" type="text" name="search" placeholder="What are you interested in?">
+                        <input class="form-control" type="text" name="search" placeholder="What are you interested in?" value="{{request('search')}}">
 
                 <div class="container">
                     <div class="form-group">
                         <select onchange="this.form.submit()" name="tag" class="form-control" style="width:250px">
-                            <option value="">--- Select day ---</option>
-                            @foreach ($tags as $tag )
+                            <option value="{{request('tag')}}">@if(request('tag') == "")--- Select day ---@endif @foreach($tags as $tag) @if(request('tag') == $tag -> id) {{$tag -> tag}} @endif @endforeach</option>
+                            <option value="">--- No Tag ---</option>
+                        @foreach ($tags as $tag )
                                 <option value="{{ $tag -> id }}">{{ $tag -> tag }}</option>
-                            @endforeach
+                        @endforeach
                         </select>
                     </div>
                 </div>

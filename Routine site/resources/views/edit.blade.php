@@ -61,6 +61,18 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="tag" class="col-md-4 col-form-label text-md-right">{{ __('Tag') }}</label>
+
+                                <select  name="tag" class="form-control" style="width:350px">
+                                    <option value="{{$routine -> tag_id}}">@if($routine -> tag_id == "")--- Select day ---@endif @foreach($tags as $tag) @if($routine -> tag_id == $tag -> id) {{$tag -> tag}} @endif @endforeach</option>
+                                    <option value="">--- No Tag ---</option>
+                                    @foreach ($tags as $tag )
+                                        <option value="{{ $tag -> id }}">{{ $tag -> tag }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-md-6">
                                     <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::user()->id}}">
                                 </div>

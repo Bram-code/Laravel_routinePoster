@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\routine;
+use App\Models\tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EditController extends Controller
@@ -30,6 +32,7 @@ class EditController extends Controller
         $routine->image = $request->input('image');
         $routine->routine = $request->input('routine');
         $routine->user_id = $request->input('user_id');
+        $routine->tag_id = $request->input('tag');
         $routine->update();
 
         return redirect()->to('/home');
@@ -39,7 +42,13 @@ class EditController extends Controller
 
         $routine = Routine::find($id);
 
-        return view('edit', compact('routine'));
+        if (Auth::user()->id != $routine -> user_id){
+            return redirect()->route('home');
+        }
+
+        $tags = Tag::all();
+
+        return view('edit', compact('routine', 'tags'));
     }
 
 }

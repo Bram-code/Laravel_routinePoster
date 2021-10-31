@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Routine;
+use App\Models\Tag;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,6 +36,7 @@ class CreateController extends Controller
         $routine->image = $request->input('image');
         $routine->routine = $request->input('routine');
         $routine->user_id = $request->input('user_id');
+        $routine->tag_id = $request->input('tag');
         $routine->save();
 
         return redirect()->to('/home');
@@ -55,7 +57,9 @@ class CreateController extends Controller
             $validate = true;
         }
 
-        return view('create', compact('validate'));
+        $tags = Tag::all();
+
+        return view('create', compact('validate', 'tags'));
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\routine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DeleteController extends Controller
 {
@@ -14,8 +15,11 @@ class DeleteController extends Controller
 
     public function index($id)
     {
-
         $routine = Routine::find($id);
+
+        if (Auth::user()->id != $routine -> user_id){
+            return redirect()->route('home');
+        }
 
         return view('delete', compact('routine'));
     }
