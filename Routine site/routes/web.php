@@ -9,7 +9,7 @@ use \App\Http\Controllers\DetailController;
 use \App\Http\Controllers\ViewController;
 use \App\Http\Controllers\EditController;
 use \App\Http\Controllers\DeleteController;
-
+use \App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +31,7 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');
 Route::get('/view', [ViewController::class, 'index'])->name('view');
 Route::get('/delete/{id}', [DeleteController::class, 'index'])->name('delete');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 Auth::routes();
 
@@ -39,6 +40,10 @@ Route::post('edit/{id}', [EditController::class, 'update']);
 Route::post('delete/{id}', [DeleteController::class, 'delete']);
 Route::post('admin', [RoutineController::class, 'switch']);
 Route::post('like/{id}', [DetailController::class, 'like']);
+Route::post('nolike/{id}', [DetailController::class, 'nolike']);
+Route::post('profile', [ProfileController::class, 'change']);
+
+
 
 
 

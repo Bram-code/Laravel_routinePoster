@@ -34,7 +34,8 @@
 
                                 <div><p>{{$routine -> routine}}</p></div>
                             </section>
-                        @if ($check == false)
+                    @auth
+                    @if ($check == false)
                         <form method="post" action="{{'/like/' . $routine->id}}">
                             @csrf
                             <div class="form-group row mb-0">
@@ -46,6 +47,19 @@
                             </div>
                         </form>
                     @endif
+                    @if ($check == true)
+                        <form method="post" action="{{'/nolike/' . $routine->id}}">
+                            @csrf
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Remove like') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    @endif
+                    @endauth
                     </div>
                 </div>
             </div>
